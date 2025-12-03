@@ -7,16 +7,16 @@ from datetime import datetime, timedelta
 # -------------------------------------
 
 tickers = [
-    "AAPL", "ABBV", "ABT", "ACN", "ADBE", "AIG", "AMD", "AMGN", "AMT", "AMZN",
-    "AVGO", "AXP", "BA", "BAC", "BK", "BKNG", "BLK", "BMY", "BRK.B", "C",
-    "CAT", "CL", "CMCSA", "COF", "COP", "COST", "CRM", "CSCO", "CVS", "CVX",
-    "DE", "DHR", "DIS", "DUK", "EMR", "FDX", "GD", "GE", "GILD", "GM",
-    "GOOG", "GS", "HD", "HON", "IBM", "INTC", "INTU", "ISRG", "JNJ",
-    "JPM", "KO", "LIN", "LLY", "LMT", "LOW", "MA", "MCD", "MDLZ", "MDT",
-    "MET", "META", "MMM", "MO", "MRK", "MS", "MSFT", "NEE", "NFLX", "NKE",
-    "NOW", "NVDA", "ORCL", "PEP", "PFE", "PG", "PLTR", "PM", "PYPL", "QCOM",
-    "RTX", "SBUX", "SCHW", "SO", "SPG", "T", "TGT", "TMO", "TMUS", "TSLA",
-    "TXN", "UBER", "UNH", "UNP", "UPS", "USB", "V", "VZ", "WFC", "WMT", "XOM"
+    "AAPL", "ABT", "ADBE", "AIG", "AMD", "AMGN", "AMT", "AMZN",
+    "AXP", "BA", "BAC", "BK", "BKNG", "BLK", "BMY", "BRK.B", "C",
+    "CAT", "CL", "CMCSA", "COF", "COP", "COST", "CSCO", "CVS", "CVX",
+    "DE", "DHR", "DIS", "DUK", "EMR", "FDX", "GD", "GE", "GILD",
+    "GS", "HD", "HON", "IBM", "INTC", "INTU", "JNJ",
+    "JPM", "KO", "LIN", "LLY", "LMT", "LOW", "MA", "MCD", "MDT",
+    "MMM", "MO", "MRK", "MS", "MSFT", "NEE", "NKE",
+    "NVDA", "ORCL", "PEP", "PFE", "PG", "QCOM",
+    "RTX", "SBUX", "SCHW", "SO", "SPG", "T", "TGT", "TMO",
+    "TXN", "UNH", "UNP", "UPS", "USB", "VZ", "WFC", "WMT", "XOM"
 ]
 # Ensure tickers are in Yahoo Finance format
 tickers = [t.replace('.', '-') for t in tickers]
@@ -35,7 +35,7 @@ start_date = end_date - timedelta(days=25 * 365)
 # -------------------------------------
 oex_close = yf.download(
     "^OEX",
-    start=start_date.strftime("%Y-%m-%d"),
+    start="2000-01-01",
     end=end_date.strftime("%Y-%m-%d")
 )["Close"]
 
@@ -47,10 +47,12 @@ print(oex_close.head())
 # -------------------------------------
 data = yf.download(
     tickers,
-    start=start_date.strftime("%Y-%m-%d"),
+    start="2000-01-01",
     end=end_date.strftime("%Y-%m-%d")
 )["Close"]
 
 print("\nMember Close Prices:")
 print(data.head())
 data.to_csv('closing_prices.csv')
+
+print(f"{len(tickers)} db részvény maradt benne")
