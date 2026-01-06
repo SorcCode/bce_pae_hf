@@ -2,11 +2,10 @@
 
 Budapesti Corvinus Egyetem
 
-## 1. Házi
+### Házi feladat határidők
 
-Heteroszkedaszticitás, Breusch-Pagan teszt és szimulációk
 
-Határidők:
+1. HF: okt 31. (péntek)
 
 2. HF: nov 9. (vasárnap)
 
